@@ -2,24 +2,24 @@
 
 var _mochaSteps = require('mocha-steps');
 
-var _puppeteer = require('puppeteer');
+var _builder = require('../builder');
 
-var _puppeteer2 = _interopRequireDefault(_puppeteer);
+var _builder2 = _interopRequireDefault(_builder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe('Mocha steps demo', function () {
-	var browser = void 0;
+	// let browser
 	var page = void 0;
 
 	before(async function () {
-		browser = await _puppeteer2.default.launch({ headless: true });
-		page = await browser.newPage();
-		await (await page).setDefaultTimeout(7000);
+		// browser = await puppeteer.launch({ headless: true })
+		page = await _builder2.default.build('Desktop');
+		// await (await page).setDefaultTimeout(7000)
 	});
 
 	after(async function () {
-		await browser.close();
+		await page.close();
 	});
 
 	(0, _mochaSteps.step)('should load google homepage', async function () {
@@ -37,3 +37,4 @@ describe('Mocha steps demo', function () {
 		console.log('From Step 4');
 	});
 });
+// import puppeteer from 'puppeteer'
