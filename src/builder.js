@@ -61,7 +61,7 @@ export default class Builder {
 
 	async getCount(selector) {
 		await this.page.waitForSelector(selector)
-		const count = await this.page.$$eval(selector, (items = items.lenght))
+		const count = await this.page.$$eval(selector, (items) => items.length)
 		return count
 	}
 
